@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="নতুন তালিকাঃ"
+        />
+
+    <EditText
+        android:id="@+id/newListNameET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="তালিকার নাম"
+        android:inputType="text"
+        android:backgroundTint="@color/app_theme_color"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textCursorDrawable="@null"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <EditText
+            android:id="@+id/budgetET"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:hint="বাজেট"
+            android:backgroundTint="@color/app_theme_color"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textCursorDrawable="@null"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="টাকা"
+            android:textColor="@color/black"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/createNewList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="তালিকা তৈরী করুন"
+        android:clickable="true"
+        android:textColor="@color/app_theme_color"
+        android:layout_gravity="end"
+        android:padding="5dp"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"/>
+
+
+</LinearLayout>
