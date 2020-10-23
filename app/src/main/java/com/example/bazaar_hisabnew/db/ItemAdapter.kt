@@ -28,5 +28,6 @@ class ItemAdapter(val items : List<Item>) : RecyclerView.Adapter<ItemAdapter.Vie
         holder.view.costPerUnitTV.text = items[position].costPerUnit
         holder.view.quantityTV.text = items[position].quantity
         holder.view.itemCostTV.text = items[position].cost
+        holder.view.unitTV.text = items[position].unit
     }
 }

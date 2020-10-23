@@ -23,6 +23,8 @@ class BottomSheetFragmentItemActivity : BottomSheetDialogFragment(), CoroutineSc
 
     private lateinit var job: Job
     private lateinit var sharedPreferences: SharedPreferences
+    private var finalCost : String = ""
+    private var costPerUnit : String = ""
 
 
     override val coroutineContext: CoroutineContext
@@ -45,17 +47,12 @@ class BottomSheetFragmentItemActivity : BottomSheetDialogFragment(), CoroutineSc
 
         val listId  = sharedPreferences.getString("id","").toString()
         val listName = sharedPreferences.getString("listName","").toString()
-        context?.toast(listId)
 
         includeItemTV.setOnClickListener {
             val itemName = itemNameET.text.toString()
             val quantity = quantityET.text.toString()
+            var costPerUnit = costPerUnitET.text.toString()
             val unit = unitET.text.toString()
-            val costPerUnit = costPerUnitET.text.toString()
-            val costPerUnitInt = (costPerUnitET.text.toString()).toInt()
-            val quantityInt = quantity.toInt()
-            val itemCost = (costPerUnitInt * quantityInt).toString()
-            val finalQuantity = "$quantity $unit"
 
             if(itemName.isEmpty()){
                 itemNameET.error = "পণ্যের নাম লিখুন"
@@ -63,33 +60,48 @@ class BottomSheetFragmentItemActivity : BottomSheetDialogFragment(), CoroutineSc
             }
 
             if(quantity.isEmpty()){
-                quantityET.error = "পরিমাণ লিখুন"
+                quantityET.error = "পণ্যের নাম লিখুন"
                 return@setOnClickListener
             }
 
             if(unit.isEmpty()){
-                unitET.error = "পণ্যের পরিমাপন একক লিখুন"
+                unitET.error = "পণ্যের নাম লিখুন"
                 return@setOnClickListener
             }
 
+            if(costPerUnit.isEmpty()){
+                costPerUnit = "0"
+            }
+
+            val quantityInDouble : Double = quantity.toDouble()
+            val costPerUnitInDouble : Double = costPerUnit.toDouble()
+            val cost : Double = quantityInDouble * costPerUnitInDouble
+            val finalCost = cost.toString()
+
+            context?.toast("$listId $listName : cost = $finalCost")
+
             launch {
                 context?.let {
-                    Database(it).itemDao().addItem(Item(listId,itemName,finalQuantity,costPerUnit,itemCost))
+                    Database(it).itemDao().addItem(Item(listId,itemName,quantity,unit,costPerUnit,finalCost))
                     itemNameET.error = null
                     quantityET.error = null
                     unitET.error = null
+                    costPerUnitET.error = null
                     itemNameET.text = null
                     quantityET.text = null
                     unitET.text = null
-                    val intent = Intent(it,ItemActivity::class.java)
-                    intent.putExtra("listName",listName)
+                    costPerUnitET.text = null
+
+                    val intent = Intent(it, ItemActivity::class.java)
                     intent.putExtra("id",listId)
+                    intent.putExtra("listName",listName)
                     it.startActivity(intent)
                 }
             }
-
-
         }
+
+
+
     }
 
     override fun onDestroy() {

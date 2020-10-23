@@ -10,21 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="10">
+       >
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:text="পণ্যের নাম:*"
+            android:text="পণ্যের নামঃ*"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/itemNameET"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="7.5"
+            android:layout_marginLeft="20dp"
             android:backgroundTint="@color/app_theme_color"
             android:inputType="text"
             android:textColor="@color/black"
@@ -35,56 +34,54 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4">
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.75"
-            android:text="পরিমাণ:*"
+            android:text="পরিমাণঃ*"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/quantityET"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.25"
+            android:layout_marginLeft="20dp"
             android:backgroundTint="@color/app_theme_color"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.75"
-            android:text="একক:*"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/unitET"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.25"
-            android:backgroundTint="@color/app_theme_color"
-            android:inputType="text"
-            android:hint="উদাঃ গ্রাম/কেজি"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
 
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="14sp"
         android:layout_marginTop="5dp"
-        android:text="প্রতি একক পরিমাণ পণ্যের মূল্য:"
         android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:text="পরিমাপক এককঃ*"/>
+
+
+    <EditText
+        android:id="@+id/unitET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="গ্রাম/কেজি/টি/লিটার ইত্যাদি"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:text="প্রতি একক পরিমাণ পণ্যের মূল্যঃ"/>
 
 
     <LinearLayout
@@ -93,13 +90,15 @@
         android:orientation="horizontal"
         android:weightSum="5">
 
+
+
         <EditText
             android:id="@+id/costPerUnitET"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:backgroundTint="@color/app_theme_color"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColor="@color/black"
             android:textCursorDrawable="@null"
             android:textSize="14sp" />
