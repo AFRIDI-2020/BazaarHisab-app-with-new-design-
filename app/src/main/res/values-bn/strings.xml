@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bazaar-Hisab</string>
+    <string name="app_name">বাজার-হিসাব</string>
 
     <!-- main activity -->
     <string name="settings">সেটিং</string>
@@ -48,16 +49,11 @@
     <string name="unit_hint">গ্রাম/কেজি/টি/লিটার ইত্যাদি</string>
     <string name="include_product">তালিকাভুক্ত করুন</string>
     <string name="update_product">নতুন করে তালিকাভুক্ত করুন</string>
-
-    <!-- edit list name budget -->
     <string name="ok">ঠিকাছে</string>
-
 
     <!--item activity -->
     <string name="item_activity_budget">বাজেট: </string>
-    <string name="item_activity_currency"> টাকা</string>
+    <string name="item_activity_currency">টাকা</string>
     <string name="total_cost">মোট খরচ</string>
     <string name="remaining_amount">বাকী আছে</string>
-
-
 </resources>

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,6 +39,11 @@ class ItemActivity : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item)
+
+
+        val toolbar : Toolbar = findViewById(R.id.itemActivityToolbar)
+        toolbar.title = null
+        setSupportActionBar(toolbar)
 
         job = Job()
 
@@ -142,6 +148,12 @@ class ItemActivity : AppCompatActivity(), CoroutineScope {
             )
         }
 
+        backIcon.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
 
     }
 
@@ -154,6 +166,7 @@ class ItemActivity : AppCompatActivity(), CoroutineScope {
     override fun onBackPressed() {
 
         val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }
 

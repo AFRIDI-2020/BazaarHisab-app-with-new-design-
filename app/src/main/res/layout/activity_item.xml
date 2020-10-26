@@ -7,29 +7,61 @@
     android:background="@color/white"
     tools:context=".ItemActivity">
 
-    <TextView
-        android:id="@+id/pageTitleTV"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/itemActivityToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="shopping list name"
-        android:textAlignment="center"
-        android:textColor="@color/app_theme_color"
-        android:textSize="18sp" />
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStart="0dp"
+        android:background="@color/app_theme_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:contentInsetLeft="0dp"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:id="@+id/backIcon"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/pageTitleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="shopping list name"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pageTitleTV"
+        android:layout_below="@+id/itemActivityToolbar"
         android:layout_centerInParent="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="বাজেট: "
+            android:text="@string/item_activity_budget"
+            android:layout_marginEnd="3dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -44,7 +76,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" টাকা"
+            android:text="@string/item_activity_currency"
+            android:layout_marginStart="3dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -56,8 +89,7 @@
         android:layout_above="@+id/addItemButton"
         android:layout_below="@+id/linearLayout"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        >
+        android:layout_marginBottom="5dp">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -65,60 +97,55 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/accountantLayout"
-            android:scrollbars="none"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="4dp"
+            android:scrollbars="none" />
 
         <LinearLayout
             android:id="@+id/accountantLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="6dp"
             android:layout_alignParentBottom="true"
-            >
+            android:orientation="vertical"
+            android:paddingBottom="6dp">
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/black"/>
+                android:background="@color/black" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="4dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="মোট খরচ"
-                    android:textSize="14sp"
+                    android:layout_marginLeft="19dp"
+                    android:text="@string/total_cost"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="19dp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/totalCostTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1098.00"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="13dp"
-                    />
+                    android:text="1098.00"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="="
-                    android:layout_toLeftOf="@+id/totalCostTV"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
                     android:layout_marginLeft="19dp"
-                    android:layout_marginRight="5dp"/>
-
-
-
-
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@+id/totalCostTV"
+                    android:text="="
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
 
             </RelativeLayout>
@@ -133,61 +160,57 @@
                     android:id="@+id/bakiAseTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="বাকী আছে"
-                    android:textSize="14sp"
+                    android:layout_marginLeft="19dp"
+                    android:text="@string/remaining_amount"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="19dp"/>
+                    android:textSize="14sp" />
 
 
                 <TextView
                     android:id="@+id/braketStrart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="("
+                    android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/bakiAseTV"
-                    android:textSize="14sp"
+                    android:text="("
                     android:textColor="@color/black"
-                    android:layout_marginLeft="10dp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/accountingBudgetTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="budget"
                     android:layout_toRightOf="@+id/braketStrart"
-                    android:textSize="14sp"
+                    android:text="budget"
                     android:textColor="@color/black"
-                    />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/minus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" - "
                     android:layout_toRightOf="@+id/accountingBudgetTV"
-                    android:textSize="14sp"
+                    android:text=" - "
                     android:textColor="@color/black"
-                    />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/accountingTotalCostTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="budget"
                     android:layout_toRightOf="@+id/minus"
-                    android:textSize="14sp"
+                    android:text="budget"
                     android:textColor="@color/black"
-                    />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/bracketEnd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=")"
                     android:layout_toRightOf="@+id/accountingTotalCostTV"
-                    android:textSize="14sp"
+                    android:text=")"
                     android:textColor="@color/black"
-                    />
+                    android:textSize="14sp" />
 
 
                 <TextView
@@ -203,14 +226,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="="
-                    android:layout_toLeftOf="@+id/remainingCostTV"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
                     android:layout_marginLeft="19dp"
-                    android:layout_marginRight="5dp"/>
-
-
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@+id/remainingCostTV"
+                    android:text="="
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
 
             </RelativeLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/help"
+        android:title="Help"
+        android:icon="@drawable/ic_baseline_help_outline_24"
+        app:showAsAction="always"/>
+
+    <item android:title="more"
+        android:id="@+id/more"
+        android:icon="@drawable/ic_baseline_more_vert_24"
+        app:showAsAction="always">
+
+        <menu>
+            <item android:title="@string/Language"
+                android:icon="@drawable/ic_baseline_language_24"
+                android:id="@+id/language"/>
+
+            <item android:id="@+id/share"
+                android:icon="@drawable/ic_baseline_share_24"
+                android:title="@string/share"/>
+
+            <item android:id="@+id/about"
+                android:icon="@drawable/ic_baseline_info_24"
+                android:title="@string/about"/>
+
+        </menu>
+
+    </item>
+
+
+
+
+
+</menu>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <EditText
+        android:id="@+id/_listNameET"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="@string/label_new_list_name_et"
+        android:inputType="text"
+        android:backgroundTint="@color/app_theme_color"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/_budgetET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/label_budget_et"
+        android:backgroundTint="@color/app_theme_color"
+        android:textCursorDrawable="@null"
+        android:inputType="numberDecimal"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:id="@+id/_okTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/app_theme_color"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:clickable="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/ok"
+        android:layout_gravity="end"/>
+
+</LinearLayout>

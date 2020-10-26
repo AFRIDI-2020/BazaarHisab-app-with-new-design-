@@ -78,7 +78,6 @@ class BottomSheetFragmentItemActivity : BottomSheetDialogFragment(), CoroutineSc
             val cost : Double = quantityInDouble * costPerUnitInDouble
             val finalCost = cost.toString()
 
-            context?.toast("$listId $listName : cost = $finalCost")
 
             launch {
                 context?.let {
@@ -95,6 +94,7 @@ class BottomSheetFragmentItemActivity : BottomSheetDialogFragment(), CoroutineSc
                     val intent = Intent(it, ItemActivity::class.java)
                     intent.putExtra("id",listId)
                     intent.putExtra("listName",listName)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     it.startActivity(intent)
                 }
             }

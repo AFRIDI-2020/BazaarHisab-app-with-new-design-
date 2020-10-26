@@ -1,9 +1,6 @@
 package com.example.bazaar_hisabnew.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ItemDao {
@@ -20,4 +17,7 @@ interface ItemDao {
 
     @Delete
     suspend fun deleteItem(items: Item)
+
+    @Update
+    suspend fun updateItem(items: Item)
 }

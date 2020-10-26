@@ -53,7 +53,6 @@ class BottomSheetFragmentMainActivity : BottomSheetDialogFragment(), CoroutineSc
             launch {
                 context?.let {
                     Database(it).listDao().addList(Lists(newListName,budget))
-                    it.toast("new list added")
                     newListNameET.error = null
                     budgetET.error = null
                     newListNameET.text = null

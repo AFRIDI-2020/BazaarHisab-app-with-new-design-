@@ -11,14 +11,14 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="নতুন তালিকাঃ"
+        android:text="@string/label_new_list"
         />
 
     <EditText
         android:id="@+id/newListNameET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="তালিকার নাম"
+        android:hint="@string/label_new_list_name_et"
         android:inputType="text"
         android:backgroundTint="@color/app_theme_color"
         android:textColor="@color/black"
@@ -37,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:hint="বাজেট"
+            android:hint="@string/label_budget_et"
             android:backgroundTint="@color/app_theme_color"
             android:inputType="number"
             android:textColor="@color/black"
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="টাকা"
+            android:text="@string/currency"
             android:textColor="@color/black"/>
 
 
@@ -59,7 +59,7 @@
         android:id="@+id/createNewList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="তালিকা তৈরী করুন"
+        android:text="@string/create_list"
         android:clickable="true"
         android:textColor="@color/app_theme_color"
         android:layout_gravity="end"

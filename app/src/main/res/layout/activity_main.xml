@@ -27,7 +27,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp"
-            android:text="খুব সহজে বাজার তালিকা তৈরী করুন"
+            android:text="@string/main_activity_headline"
             android:textColor="@color/black"
             android:textSize="18sp" />
 

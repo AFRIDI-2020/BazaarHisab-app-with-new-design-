@@ -5,10 +5,13 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bazaar_hisabnew.ItemActivity
 import com.example.bazaar_hisabnew.R
+import com.example.bazaar_hisabnew.toast
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.edit_item.view.*
 import kotlinx.android.synthetic.main.show_item_one_by_one.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -77,6 +80,47 @@ class ItemAdapter(val items : MutableList<Item>,val context: Context) : Recycler
         holder.view.quantityTV.text = items[position].quantity
         holder.view.itemCostTV.text = items[position].cost
         holder.view.unitTV.text = items[position].unit
+
+        holder.itemView.setOnClickListener {
+            AlertDialog.Builder(context).apply {
+                val view = LayoutInflater.from(context).inflate(R.layout.edit_item,null)
+                setView(view)
+                view._itemNameET.setText(items[position].itemName)
+                view._quantityET.setText(items[position].quantity)
+                view._unitET.setText(items[position].unit)
+                view._costPerUnitET.setText(items[position].costPerUnit)
+
+                view._includeItemTV.setOnClickListener {
+                    val _itemName = view._itemNameET.text.toString()
+                    val _quantity = view._quantityET.text.toString()
+                    val _unit = view._unitET.text.toString()
+                    val _costPerUnit = view._costPerUnitET.text.toString()
+                    val _listId = items[position].listId
+
+                    val _quantityInDouble : Double = _quantity.toDouble()
+                    val _costPerUnitInDouble : Double = _costPerUnit.toDouble()
+                    val _cost : Double = _quantityInDouble * _costPerUnitInDouble
+                    val _finalCost = _cost.toString()
+
+                    val item = Item(_listId,_itemName,_quantity,_unit,_costPerUnit,_finalCost)
+
+                    item.id = items[position].id
+
+                    launch {
+                        context.let {
+                            val _listName = Database(it).listDao().getListName(_listId.toInt())
+                            Database(it).itemDao().updateItem(item)
+                            val intent = Intent(it, ItemActivity::class.java)
+                            intent.putExtra("id", _listId)
+                            intent.putExtra("listName",_listName)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            it.startActivity(intent)
+
+                        }
+                    }
+                }
+            }.show()
+        }
     }
 
 
