@@ -10,7 +10,7 @@ class HelpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help)
 
-        pageTitle.text = resources.getString(R.string.app_name)
+        pageTitle.text = "বাজার-হিসাব গাইড"
 
         backIcon.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)

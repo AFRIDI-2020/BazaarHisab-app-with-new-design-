@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -168,6 +170,25 @@ class ItemActivity : AppCompatActivity(), CoroutineScope {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.toolbar_menu_item_activity,menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.help -> {
+                val intent = Intent(this, HelpActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 }

@@ -49,6 +49,20 @@
     <string name="unit_hint">গ্রাম/কেজি/টি/লিটার ইত্যাদি</string>
     <string name="include_product">তালিকাভুক্ত করুন</string>
     <string name="update_product">নতুন করে তালিকাভুক্ত করুন</string>
+    <string name="spinner_kg">কেজি</string>
+    <string name="spinner_gram">গ্রাম</string>
+    <string name="spinner_liter">লিটার</string>
+    <string name="spinner_mili">মি.লি.</string>
+    <string name="spinner_piece">পিছ</string>
+    <string name="spinner_number">টি</string>
+    <string name="spinner_packet">প্যাকেট</string>
+    <string name="spinner_bag">ব্যাগ</string>
+    <string name="spinner_yard">গজ</string>
+    <string name="spinner_feet">ফুট</string>
+    <string name="spinner_unit">পরিমাণ</string>
+    <string name="spinner_hali">হালি</string>
+    <string name="spinner_dozen">ডজন</string>
+    <string name="spinner_ati">আঁটি</string>
 
     <!-- edit list name budget -->
     <string name="ok">ঠিকাছে</string>

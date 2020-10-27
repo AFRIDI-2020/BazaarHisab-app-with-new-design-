@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:text="বাজার-হিসাব"
+            android:text="বাজার-হিসাব গাইড"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -261,28 +261,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/quantity"/>
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/label_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:text="@string/label_unit"
-                app:layout_constraintTop_toBottomOf="@+id/quantity_des"
-                android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="parent"/>
 
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/unit_des"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:layout_marginStart="3dp"
-                android:text="@string/unit"
-                app:layout_constraintStart_toStartOf="@+id/label_unit"
-                app:layout_constraintTop_toBottomOf="@+id/label_unit"
-                app:layout_constraintEnd_toEndOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -292,7 +271,7 @@
                 android:text="@string/label_cost_per_unit"
                 android:id="@+id/label_cost_per_unit"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/unit_des"
+                app:layout_constraintTop_toBottomOf="@+id/quantity_des"
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
