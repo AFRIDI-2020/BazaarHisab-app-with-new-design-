@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".AboutActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".1"
+            android:id="@+id/gl_app_logo"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/app_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/app_logo"
+            app:layout_constraintTop_toTopOf="@id/gl_app_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/about"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="@string/about_app_detail"
+            app:layout_constraintTop_toBottomOf="@+id/app_logo"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Developer"
+            android:textColor="@color/app_theme_color"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/about"
+            app:layout_constraintStart_toStartOf="@+id/about"
+            app:layout_constraintEnd_toEndOf="@id/about"
+            android:layout_marginTop="24dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/developer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="AFRIDI MAHAFUZ"
+            android:fontFamily="serif-monospace"
+            app:layout_constraintTop_toBottomOf="@+id/label_developer"
+            app:layout_constraintStart_toStartOf="@+id/label_developer"
+            app:layout_constraintEnd_toEndOf="@+id/label_developer"
+            android:layout_marginTop="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_theme_color"
+            android:textSize="16sp"
+            android:text="afridi.mahafuz@gmail.com"
+            app:layout_constraintTop_toBottomOf="@id/developer_name"
+            app:layout_constraintStart_toStartOf="@id/developer_name"
+            app:layout_constraintEnd_toEndOf="@id/developer_name"
+            android:layout_marginTop="5dp"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+</ScrollView>

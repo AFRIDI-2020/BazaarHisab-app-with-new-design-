@@ -15,6 +15,9 @@ interface ItemDao {
     @Query("SELECT cost FROM ITEM WHERE list_id LIKE :listId ORDER BY id ASC")
     suspend fun getAllCost(listId: String) : List<String>
 
+    @Query("SELECT isChecked FROM Item WHERE id LIKE :itemId")
+    suspend fun textIsChecked(itemId : Int) : Boolean
+
     @Delete
     suspend fun deleteItem(items: Item)
 

@@ -81,7 +81,7 @@ class BottomSheetFragmentItemActivity : BottomSheetDialogFragment(), CoroutineSc
 
             launch {
                 context?.let {
-                    Database(it).itemDao().addItem(Item(listId,itemName,quantity,unit,costPerUnit,finalCost))
+                    Database(it).itemDao().addItem(Item(listId,itemName,quantity,unit,costPerUnit,finalCost,false))
                     itemNameET.error = null
                     quantityET.error = null
                     unitET.error = null

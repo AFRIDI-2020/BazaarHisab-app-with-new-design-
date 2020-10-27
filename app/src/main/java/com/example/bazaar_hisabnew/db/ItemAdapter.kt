@@ -2,6 +2,9 @@ package com.example.bazaar_hisabnew.db
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,14 +77,53 @@ class ItemAdapter(val items : MutableList<Item>,val context: Context) : Recycler
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         job = Job()
-
         holder.view.itemNameTV.text = items[position].itemName
         holder.view.costPerUnitTV.text = items[position].costPerUnit
         holder.view.quantityTV.text = items[position].quantity
         holder.view.itemCostTV.text = items[position].cost
         holder.view.unitTV.text = items[position].unit
 
+        val check = items[position].isChecked
+
+        if(!check){
+            holder.view.itemNameTV.setTextColor(Color.parseColor("#000000"))
+        }else{
+            holder.view.itemNameTV.setTextColor(Color.parseColor("#00994C"))
+        }
+
+        val item_name = items[position].itemName
+        val quantity = items[position].quantity
+        val list_id = items[position].listId
+        val unit = items[position].unit
+        val cost_per_unit = items[position].costPerUnit
+        val cost = items[position].cost
+
         holder.itemView.setOnClickListener {
+
+            launch {
+                context.let {
+                    var isChecked : Boolean  = Database(it).itemDao().textIsChecked(items[position].id)
+                    if(!isChecked){
+                        holder.view.itemNameTV.setTextColor(Color.parseColor("#00994C"))
+                        isChecked = true
+                        val item = Item(list_id,item_name,quantity,unit,cost_per_unit,cost,isChecked)
+                        item.id = items[position].id
+                        Database(it).itemDao().updateItem(item)
+                    }else{
+                        holder.view.itemNameTV.setTextColor(Color.parseColor("#000000"))
+                        isChecked = false
+                        val item = Item(list_id,item_name,quantity,unit,cost_per_unit,cost,isChecked)
+                        item.id = items[position].id
+                        Database(it).itemDao().updateItem(item)
+
+                    }
+                }
+            }
+
+        }
+
+        holder.itemView.setOnLongClickListener {
+
             AlertDialog.Builder(context).apply {
                 val view = LayoutInflater.from(context).inflate(R.layout.edit_item,null)
                 setView(view)
@@ -102,7 +144,7 @@ class ItemAdapter(val items : MutableList<Item>,val context: Context) : Recycler
                     val _cost : Double = _quantityInDouble * _costPerUnitInDouble
                     val _finalCost = _cost.toString()
 
-                    val item = Item(_listId,_itemName,_quantity,_unit,_costPerUnit,_finalCost)
+                    val item = Item(_listId,_itemName,_quantity,_unit,_costPerUnit,_finalCost,false)
 
                     item.id = items[position].id
 
@@ -120,7 +162,13 @@ class ItemAdapter(val items : MutableList<Item>,val context: Context) : Recycler
                     }
                 }
             }.show()
+
+            true
         }
+
+
+
+
     }
 
 

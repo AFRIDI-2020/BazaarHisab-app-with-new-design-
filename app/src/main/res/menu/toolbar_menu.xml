@@ -13,9 +13,6 @@
         app:showAsAction="always">
 
         <menu>
-            <item android:title="@string/Language"
-                android:icon="@drawable/ic_baseline_language_24"
-                android:id="@+id/language"/>
 
             <item android:id="@+id/share"
                 android:icon="@drawable/ic_baseline_share_24"

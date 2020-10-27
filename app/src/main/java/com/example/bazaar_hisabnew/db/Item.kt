@@ -11,7 +11,8 @@ class Item(
     @ColumnInfo(name = "quantity") val quantity: String,
     @ColumnInfo(name = "unit") val unit: String,
     @ColumnInfo(name = "cost_per_unit") val costPerUnit: String,
-    @ColumnInfo(name = "cost") val cost: String
+    @ColumnInfo(name = "cost") val cost: String,
+    @ColumnInfo(name = "isChecked") val isChecked : Boolean
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

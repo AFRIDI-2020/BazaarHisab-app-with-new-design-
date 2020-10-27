@@ -1,14 +1,11 @@
 package com.example.bazaar_hisabnew
 
-import android.content.Context
+
 import android.content.Intent
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,10 +18,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.util.*
+import java.lang.StringBuilder
 import kotlin.coroutines.CoroutineContext
 
-@Suppress("DEPRECATION")
+
 class MainActivity : AppCompatActivity(), CoroutineScope {
 
     private lateinit var job: Job
@@ -38,7 +35,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        loadLocale()
+
 
         job = Job()
 
@@ -96,59 +93,29 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId){
-            R.id.help ->
-            {
+        when (item.itemId) {
+            R.id.help -> {
                 val intent = Intent(this, HelpActivity::class.java)
                 startActivity(intent)
             }
-            R.id.language ->
-            {
-                val languages = arrayOf("বাংলা","English")
+            R.id.share ->{
+                val message = "I am afridi"
+                val intent = Intent()
+                intent.action = Intent.ACTION_SEND
+                intent.putExtra(Intent.EXTRA_TEXT,message)
+                intent.type = "text/plain"
 
-                val builder = AlertDialog.Builder(this)
-                builder.setSingleChoiceItems(languages,-1){dialog, which ->
-                    if(which == 0){
-                        setLocale("bn")
-                        recreate()
-                    }
-                    if(which == 1){
-                        setLocale("en")
-                        recreate()
-                    }
-                    dialog.dismiss()
-                }
-
-                val mdialog = builder.create()
-                mdialog.show()
+                startActivity(Intent.createChooser(intent,"শেয়ার করুন..."))
             }
+            R.id.about ->{
+                val intent = Intent(this,AboutActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+
         }
 
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun setLocale(language: String) {
-        val locale = Locale(language)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.locale = locale
-        baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
-
-        val editor = getSharedPreferences("com.example.bazaar_hisabnew.language",Context.MODE_PRIVATE).edit()
-        editor.putString("language",language)
-        editor.apply()
-    }
-
-
-    private fun loadLocale(){
-        val sharedPreferences =
-            getSharedPreferences("com.example.bazaar_hisabnew.language", Context.MODE_PRIVATE)
-
-
-        val lang = sharedPreferences.getString("language","")
-        if (lang != null) {
-            setLocale(lang)
-        }
     }
 
 
